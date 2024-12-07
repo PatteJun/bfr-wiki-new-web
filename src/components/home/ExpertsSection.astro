@@ -1,0 +1,27 @@
+---
+import { experts } from '../../data/experts';
+import PersonCard from '../shared/PersonCard.astro';
+
+const activeExperts = experts.filter(expert => expert.active);
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Our Experts</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      {activeExperts.map((expert) => (
+        <PersonCard 
+          name={expert.name}
+          image={expert.image}
+          role={expert.specialty}
+          href={`/experts/${expert.id}`}
+        />
+      ))}
+    </div>
+    <div class="text-center mt-12">
+      <a href="/experts" class="inline-block bg-blue-900 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition-colors">
+        View All Experts
+      </a>
+    </div>
+  </div>
+</section>

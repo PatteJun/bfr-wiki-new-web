@@ -1,0 +1,27 @@
+---
+const navItems = [
+  { href: "/dealers", label: "Dealers" },
+  { href: "/experts", label: "Experts" },
+  { href: "/objects", label: "Objects" },
+  { href: "/compilations", label: "Compilations" }
+];
+---
+
+<header class="bg-blue-900 text-white">
+  <div class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold">Bares für Rares Wiki</a>
+      <nav>
+        <ul class="flex space-x-6">
+          {navItems.map(item => (
+            <li>
+              <a href={item.href} class="hover:text-yellow-300 transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

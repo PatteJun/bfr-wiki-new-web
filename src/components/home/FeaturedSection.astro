@@ -1,0 +1,23 @@
+---
+import type { Object } from '../../data/featured-objects';
+import { featuredObjects } from '../../data/featured-objects';
+import ObjectCard from '../objects/ObjectCard.astro';
+
+const latestObjects = featuredObjects.slice(0, 3);
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Latest Treasures</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {latestObjects.map((object) => (
+        <ObjectCard object={object} />
+      ))}
+    </div>
+    <div class="text-center mt-12">
+      <a href="/objects" class="inline-block bg-blue-900 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition-colors">
+        View All Objects
+      </a>
+    </div>
+  </div>
+</section>

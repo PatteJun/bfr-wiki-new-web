@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/home/HeroSection.astro';
+import FeaturedSection from '../components/home/FeaturedSection.astro';
+import DealersSection from '../components/home/DealersSection.astro';
+import ExpertsSection from '../components/home/ExpertsSection.astro';
+import CompilationsSection from '../components/home/CompilationsSection.astro';
+import Disclaimer from '../components/shared/Disclaimer.astro';
+---
+
+<Layout title="Welcome">
+  <main>
+    <HeroSection />
+    <div class="container mx-auto px-4">
+      <Disclaimer />
+    </div>
+    <FeaturedSection />
+    <DealersSection />
+    <ExpertsSection />
+    <CompilationsSection />
+  </main>
+</Layout>
