@@ -1,0 +1,36 @@
+---
+interface Appraisal {
+  objectId: string;
+  description: string;
+}
+
+interface Props {
+  appraisals: Appraisal[];
+}
+
+const { appraisals } = Astro.props;
+---
+
+<section class="py-12 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl font-bold mb-8 text-center">Notable Appraisals</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      {appraisals.map((appraisal) => (
+        <article class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+          <img
+            src={`https://source.unsplash.com/featured/?antique,${appraisal.objectId}`}
+            alt="Appraisal object"
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <p class="text-gray-700">{appraisal.description}</p>
+          <a
+            href={`/objects/${appraisal.objectId}`}
+            class="inline-block mt-4 text-blue-900 hover:text-blue-700 font-medium"
+          >
+            View Details →
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

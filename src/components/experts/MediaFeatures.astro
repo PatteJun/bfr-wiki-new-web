@@ -1,0 +1,35 @@
+---
+interface MediaFeature {
+  title: string;
+  url: string;
+}
+
+interface Props {
+  features: MediaFeature[];
+}
+
+const { features } = Astro.props;
+---
+
+<section class="py-12 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl font-bold mb-8 text-center">Featured In Media</h2>
+    <div class="max-w-3xl mx-auto grid grid-cols-1 gap-4">
+      {features.map((feature) => (
+        <a
+          href={feature.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors"
+        >
+          <div class="flex items-center justify-between">
+            <span class="font-medium text-gray-900">{feature.title}</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

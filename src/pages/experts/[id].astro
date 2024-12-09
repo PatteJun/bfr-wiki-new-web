@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ExpertHero from '../../components/experts/ExpertHero.astro';
+import ExpertBiography from '../../components/experts/ExpertBiography.astro';
+import NotableAppraisals from '../../components/experts/NotableAppraisals.astro';
+import SpecialEpisodes from '../../components/experts/SpecialEpisodes.astro';
+import MediaFeatures from '../../components/experts/MediaFeatures.astro';
+import { expertsData } from '../../data/experts-data';
+
+export function getStaticPaths() {
+  return Object.keys(expertsData).map(id => ({
+    params: { id },
+    props: { expert: expertsData[id] },
+  }));
+}
+
+const { expert } = Astro.props;
+---
+
+<Layout title={expert.name}>
+  <main>
+    <ExpertHero
+      name={expert.name}
+      profilePicture={expert.profilePicture}
+      expertise={expert.expertise}
+      yearsActive={expert.yearsActiveOnShow}
+    />
+
+    <ExpertBiography
+      biography={expert.biography}
+      trivia={expert.trivia}
+    />
+
+    <NotableAppraisals
+      appraisals={expert.notableAppraisals}
+    />
+
+    <SpecialEpisodes
+      episodes={expert.specialEpisodesOrFeatures}
+    />
+
+    <MediaFeatures
+      features={expert.featuredInMedia}
+    />
+  </main>
+</Layout>
